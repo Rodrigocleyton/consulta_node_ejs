@@ -24,8 +24,22 @@ app.get('/', (req, res) =>{
     res.render("consulta")
 })
 
-app.get('/produto', (req, res) =>{
-    res.render("produto")
+app.post('/produto', (req, res) =>{
+    var produto = req.body.produto
+    res.send(produto)
+    console.log(produto)
+    //fazer o código sequelizer para buscar o produto
+})
+
+app.get('/cadastrar', (req, res)=>{
+    res.render('cadastrar')
+})
+
+app.post('/salvarproduto', (req,res)=>{
+     var nomeProduto = req.body.nomeProd
+     var preco = req.body.preco
+     console.log(nomeProduto + " " + preco)
+     res.redirect('/cadastrar')
 })
 
 
