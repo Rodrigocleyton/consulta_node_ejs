@@ -8,9 +8,21 @@
                     <form class="d-flex" role="search" method="post" action="/produto">
                     <input class="form-control me-2" type="search"   name="produto"  placeholder="Nome do produto" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">consultar</button>
+                    <button class="btn btn-outline-success" type="submit">Listar</button>
                     </form>
                 </div>
             </nav>
+            <br>
+            <% produtos.forEach(produtos => { %>
+                <br>
+                <div class="card">
+                    <div class="card-body">
+                        <h3><%= produtos.nome %></h3>
+                        <h3><%= produtos.preco %></h3>
+                    </div>
+                </div>
+           <% }) %>
+
     </div>
 </body>
 <%-include('partials/footer.ejs')%>

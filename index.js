@@ -24,7 +24,12 @@ app.use(express.static('public'))
 
 
 app.get('/', (req, res) =>{
-    res.render("consulta")
+    Produto.findAll({raw:true}).then(produto =>{
+        res.render("consulta", {
+            produtos:produto
+        })
+    })
+    
 })
 
 app.post('/produto', (req, res) =>{
@@ -49,7 +54,7 @@ app.post('/salvarproduto', (req,res)=>{
         nome:nomeProduto,
         preco:preco
     }).then(()=>{
-        res.redirect("/")
+        res.redirect("/cadastrar")
     })
 })
 
