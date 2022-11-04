@@ -32,15 +32,44 @@ app.get('/', (req, res) =>{
     
 })
 
-app.post('/produto', (req, res) =>{
-    var produto = req.body.produto
-    res.send(produto)
-    console.log(produto)
+app.get('/produto/:nome', (req, res) =>{
+    var nome = req.params.nome
+    //console.log(nome)
+    Produto.findOne({
+        where: {nome: nome}
+    }).then(produto =>{
+        if(produto != undefined) {
+            res.render('produto', {
+                produto:produto
+                
+            })
+        } else {
+            res.redirect('/consulta')
+        }
+    })
     //fazer o código sequelizer para buscar o produto
 })
 
 app.get('/cadastrar', (req, res)=>{
     res.render('cadastrar')
+})
+
+app.get('/id/:id', (req, res) =>{
+        var id = req.params.id
+        Produto.findOne({
+            where: {id:id}
+        }).then(produto =>{
+            if(produto != undefined) {
+                res.render('produto', {
+                    produto:produto
+                })
+            } else {
+                res.redirect('/consulta')
+            }
+        })
+            
+        
+    
 })
 
 app.post('/salvarproduto', (req,res)=>{

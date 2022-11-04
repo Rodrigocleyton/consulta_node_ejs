@@ -10,15 +10,16 @@
                     <button class="btn btn-outline-success" type="submit">consultar</button>
                     <button class="btn btn-outline-success" type="submit">Listar</button>
                     </form>
+                    
                 </div>
             </nav>
             <br>
-            <% produtos.forEach(produtos => { %>
+            <% produtos.forEach(produto => { %>
                 <br>
                 <div class="card">
                     <div class="card-body">
-                        <h3><%= produtos.nome %></h3>
-                        <h3><%= produtos.preco %></h3>
+                        <h3><%= produto.nome %></h3>
+                        <h3><%= produto.preco %></h3>
                     </div>
                 </div>
            <% }) %>
