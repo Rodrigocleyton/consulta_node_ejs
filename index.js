@@ -54,7 +54,7 @@ app.get('/cadastrar', (req, res)=>{
     res.render('cadastrar')
 })
 
-app.get('/id/:id', (req, res) =>{
+app.get('/produto/:id', (req, res) =>{
         var id = req.params.id
         Produto.findOne({
             where: {id:id}
